@@ -12,38 +12,28 @@ public class NumberCounter {
         this.numbers = numbers;
     }
 
+    @Deprecated
     public int count(int numberType) {
         int sum = 0;
+
         if (numberType == EVEN) {
-            for (int i : numbers) {
-                if (i % 2 == 0) {
-                    sum++;
-                }
-            }
+            sum = new EvenCounter().count(numbers);
 
         } else if (numberType == ODD){
-            for (int i : numbers) {
-                if (i % 2 == 1) {
-                    sum++;
-                }
-            }
+            sum = new OddCounter().count(numbers);
 
         } else if (numberType == POSITIVE){
-            for (int i : numbers) {
-                if (i > 0) {
-                    sum++;
-                }
-            }
+            sum = new PositiveCounter().count(numbers);
 
         } else if (numberType == NEGATIVE){
-            for (int i : numbers) {
-                if (i < 0) {
-                    sum++;
-                }
-            }
+            sum = new NegativeCounter().count(numbers);
 
         }
-
         return sum;
     }
+
+    public int count(GenericCounter counter){
+        return counter.count(numbers);
+    }
+
 }
