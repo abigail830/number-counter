@@ -12,32 +12,33 @@ public class NumberCounter {
         this.numbers = numbers;
     }
 
+    @Deprecated
     public int count(int numberType) {
         int sum = 0;
         if (numberType == EVEN) {
             for (int i : numbers) {
-                if (i % 2 == 0) {
+                if (new EventStrategic().shouldCount(i)) {
                     sum++;
                 }
             }
 
         } else if (numberType == ODD){
             for (int i : numbers) {
-                if (i % 2 == 1) {
+                if (new OddStrategic().shouldCount(i)) {
                     sum++;
                 }
             }
 
         } else if (numberType == POSITIVE){
             for (int i : numbers) {
-                if (i > 0) {
+                if (new PositiveStrategic().shouldCount(i)) {
                     sum++;
                 }
             }
 
         } else if (numberType == NEGATIVE){
             for (int i : numbers) {
-                if (i < 0) {
+                if (new NegativeStrategic().shouldCount(i)) {
                     sum++;
                 }
             }
@@ -46,4 +47,16 @@ public class NumberCounter {
 
         return sum;
     }
+
+    public int count(CountStrategic strategic) {
+        int sum = 0;
+        for (int i : numbers) {
+            if (strategic.shouldCount(i)) {
+                sum++;
+            }
+        }
+        return sum;
+
+    }
+
 }
