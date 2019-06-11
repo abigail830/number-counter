@@ -13,37 +13,45 @@ public class NumberCounter {
     }
 
     public int count(int numberType) {
-        int sum = 0;
+
         if (numberType == EVEN) {
+            int sum = 0;
             for (int i : numbers) {
                 if (i % 2 == 0) {
-                    sum++;
+                    sum += i;
                 }
             }
+            return sum;
 
-        } else if (numberType == ODD){
+        } else if (numberType == ODD) {
+            int sum = 0;
             for (int i : numbers) {
                 if (i % 2 == 1) {
-                    sum++;
+                    sum += i;
                 }
             }
+            return sum;
 
-        } else if (numberType == POSITIVE){
+        } else if (numberType == POSITIVE) {
+            int sum = 1;
             for (int i : numbers) {
                 if (i > 0) {
-                    sum++;
+                    sum *= i;
                 }
             }
+            return sum;
 
-        } else if (numberType == NEGATIVE){
+        } else if (numberType == NEGATIVE) {
+            int sum = 1;
             for (int i : numbers) {
                 if (i < 0) {
-                    sum++;
+                    sum *= Math.abs(i);
                 }
             }
-
+            return sum;
         }
 
-        return sum;
+        return 0;
+
     }
 }
