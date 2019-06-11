@@ -12,46 +12,26 @@ public class NumberCounter {
         this.numbers = numbers;
     }
 
+    @Deprecated
     public int count(int numberType) {
 
         if (numberType == EVEN) {
-            int sum = 0;
-            for (int i : numbers) {
-                if (i % 2 == 0) {
-                    sum += i;
-                }
-            }
-            return sum;
+            return new EvenCounter().count(numbers);
 
         } else if (numberType == ODD) {
-            int sum = 0;
-            for (int i : numbers) {
-                if (i % 2 == 1) {
-                    sum += i;
-                }
-            }
-            return sum;
+            return new OddCounter().count(numbers);
 
         } else if (numberType == POSITIVE) {
-            int sum = 1;
-            for (int i : numbers) {
-                if (i > 0) {
-                    sum *= i;
-                }
-            }
-            return sum;
+            return new PostiveCounter().count(numbers);
 
         } else if (numberType == NEGATIVE) {
-            int sum = 1;
-            for (int i : numbers) {
-                if (i < 0) {
-                    sum *= Math.abs(i);
-                }
-            }
-            return sum;
+            return new NegativeCounter().count(numbers);
         }
-
         return 0;
-
     }
+
+    public int count(GenericCounter counter) {
+        return counter.count(numbers);
+    }
+
 }
