@@ -1,3 +1,4 @@
+import java.util.stream.IntStream;
 
 public class NumberCounter {
     public static final int EVEN = 1;
@@ -15,33 +16,16 @@ public class NumberCounter {
     public int count(int numberType) {
         int sum = 0;
         if (numberType == EVEN) {
-            for (int i : numbers) {
-                if (i % 2 == 0) {
-                    sum++;
-                }
-            }
+            IntStream.of(this.numbers).filter(i -> i % 2 == 0).count();
 
         } else if (numberType == ODD){
-            for (int i : numbers) {
-                if (i % 2 == 1) {
-                    sum++;
-                }
-            }
+            IntStream.of(this.numbers).filter(i -> i % 2 == 1).count();
 
         } else if (numberType == POSITIVE){
-            for (int i : numbers) {
-                if (i > 0) {
-                    sum++;
-                }
-            }
+            IntStream.of(this.numbers).filter(i -> i > 0).count();
 
         } else if (numberType == NEGATIVE){
-            for (int i : numbers) {
-                if (i < 0) {
-                    sum++;
-                }
-            }
-
+            IntStream.of(this.numbers).filter(i -> i < 0).count();
         }
 
         return sum;
