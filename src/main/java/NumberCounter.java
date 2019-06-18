@@ -1,3 +1,4 @@
+import java.util.function.IntPredicate;
 
 public class NumberCounter {
     public static final int EVEN = 1;
@@ -7,11 +8,21 @@ public class NumberCounter {
 
     private final int[] numbers;
 
-
     public NumberCounter(int... numbers) {
         this.numbers = numbers;
     }
 
+    public int count(IntPredicate ifCount) {
+        int sum = 0;
+        for (int i : numbers) {
+            if (ifCount.test(i))
+                sum++;
+        }
+        return sum;
+    }
+
+
+    @Deprecated
     public int count(int numberType) {
         int sum = 0;
         if (numberType == EVEN) {
@@ -21,21 +32,21 @@ public class NumberCounter {
                 }
             }
 
-        } else if (numberType == ODD){
+        } else if (numberType == ODD) {
             for (int i : numbers) {
                 if (i % 2 == 1) {
                     sum++;
                 }
             }
 
-        } else if (numberType == POSITIVE){
+        } else if (numberType == POSITIVE) {
             for (int i : numbers) {
                 if (i > 0) {
                     sum++;
                 }
             }
 
-        } else if (numberType == NEGATIVE){
+        } else if (numberType == NEGATIVE) {
             for (int i : numbers) {
                 if (i < 0) {
                     sum++;
@@ -47,3 +58,5 @@ public class NumberCounter {
         return sum;
     }
 }
+
+
